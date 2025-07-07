@@ -1,0 +1,86 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Laptop -->
+  <g id="laptop">
+    <!-- Laptop base -->
+    <rect x="50" y="280" width="400" height="20" rx="10" fill="#2C3E50"/>
+    
+    <!-- Laptop screen -->
+    <rect x="80" y="80" width="340" height="210" rx="8" fill="#1A1A1A"/>
+    
+    <!-- Screen bezel -->
+    <rect x="90" y="90" width="320" height="180" rx="4" fill="#FFFFFF"/>
+    
+    <!-- Header bar -->
+    <rect x="90" y="90" width="320" height="35" rx="4" fill="#004439"/>
+    
+    <!-- Yembal logo in header -->
+    <text x="110" y="112" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Yembal</text>
+    
+    <!-- Navigation items -->
+    <text x="200" y="112" fill="white" font-family="Arial, sans-serif" font-size="12">Carte</text>
+    <text x="250" y="112" fill="white" font-family="Arial, sans-serif" font-size="12">Projets</text>
+    <text x="300" y="112" fill="white" font-family="Arial, sans-serif" font-size="12">Accompagnement</text>
+    
+    <!-- Sidebar -->
+    <rect x="90" y="125" width="80" height="145" fill="#F8F9FA"/>
+    
+    <!-- Sidebar items -->
+    <rect x="95" y="135" width="70" height="8" rx="4" fill="#E9ECEF"/>
+    <rect x="95" y="150" width="50" height="6" rx="3" fill="#DEE2E6"/>
+    <rect x="95" y="165" width="60" height="6" rx="3" fill="#DEE2E6"/>
+    <rect x="95" y="180" width="45" height="6" rx="3" fill="#DEE2E6"/>
+    
+    <!-- Main content area - Map -->
+    <rect x="170" y="125" width="240" height="145" fill="#E3F2FD"/>
+    
+    <!-- Map of Senegal simplified -->
+    <path d="M190 140 L220 135 L250 140 L280 145 L300 150 L320 160 L340 170 L350 180 L360 200 L350 220 L340 230 L320 240 L300 245 L280 250 L250 245 L220 240 L190 235 L180 220 L175 200 L180 180 L185 160 Z" fill="#4CAF50" fill-opacity="0.6"/>
+    
+    <!-- Cities/points on map -->
+    <circle cx="220" cy="180" r="3" fill="#FF5722"/>
+    <circle cx="280" cy="190" r="3" fill="#FF5722"/>
+    <circle cx="320" cy="200" r="3" fill="#FF5722"/>
+    <circle cx="250" cy="210" r="3" fill="#FF5722"/>
+    
+    <!-- Legend -->
+    <rect x="175" y="245" width="60" height="20" rx="4" fill="white" stroke="#DDD"/>
+    <text x="180" y="257" fill="#666" font-family="Arial, sans-serif" font-size="8">Légende</text>
+  </g>
+  
+  <!-- Mobile Phone -->
+  <g id="mobile">
+    <!-- Phone body -->
+    <rect x="450" y="120" width="120" height="200" rx="15" fill="#2C3E50"/>
+    
+    <!-- Phone screen -->
+    <rect x="460" y="130" width="100" height="160" rx="8" fill="#FFFFFF"/>
+    
+    <!-- Mobile header -->
+    <rect x="460" y="130" width="100" height="25" rx="4" fill="#004439"/>
+    
+    <!-- Mobile Yembal logo -->
+    <text x="470" y="145" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">Yembal</text>
+    
+    <!-- Mobile map area -->
+    <rect x="465" y="160" width="90" height="100" fill="#E3F2FD"/>
+    
+    <!-- Mobile map simplified -->
+    <path d="M475 170 L485 168 L495 170 L505 172 L515 175 L525 180 L535 185 L540 190 L545 200 L540 210 L535 215 L525 220 L515 222 L505 224 L495 222 L485 220 L475 218 L470 210 L468 200 L470 190 L472 180 Z" fill="#4CAF50" fill-opacity="0.6"/>
+    
+    <!-- Mobile cities -->
+    <circle cx="485" cy="190" r="2" fill="#FF5722"/>
+    <circle cx="505" cy="195" r="2" fill="#FF5722"/>
+    <circle cx="525" cy="200" r="2" fill="#FF5722"/>
+    
+    <!-- Mobile buttons -->
+    <rect x="470" y="270" width="35" height="12" rx="6" fill="#4CAF50"/>
+    <text x="475" y="278" fill="white" font-family="Arial, sans-serif" font-size="6">Explorer</text>
+    
+    <rect x="515" y="270" width="35" height="12" rx="6" fill="#FFC107"/>
+    <text x="520" y="278" fill="white" font-family="Arial, sans-serif" font-size="6">Projets</text>
+  </g>
+  
+  <!-- Green circle icon behind -->
+  <circle cx="520" cy="60" r="25" fill="#4CAF50"/>
+  <path d="M510 50 L515 55 L530 45 L535 50 L520 70 L505 55 Z" fill="white"/>
+</svg> 

@@ -1,0 +1,20 @@
+<% content_for :extern_css do %>
+  <link rel="stylesheet" href="/css/home/header.css">
+  <link rel="stylesheet" href="/css/home/footer.css">
+<% end %>
+
+<% content_for :extern_js do %>
+  <script src="/js/header.js"></script>
+<% end %>
+
+<%= render "home/partials/header" %>
+
+<!-- Contenu principal de la page d'accueil -->
+<main class="main-content">
+  <div class="container">
+    <h1>Bienvenue sur Yembal</h1>
+    <p>Découvrez les opportunités d'investissement au Sénégal</p>
+  </div>
+</main>
+
+<%= render "home/partials/footer" %>

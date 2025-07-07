@@ -1,0 +1,8 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Feuille 1 -->
+  <path d="M20 20C16 16 8 18 10 25C12 30 18 28 20 20Z" fill="#004439"/>
+  <!-- Feuille 2 -->
+  <path d="M20 20C24 16 32 18 30 25C28 30 22 28 20 20Z" fill="#004439"/>
+  <!-- Tige -->
+  <line x1="20" y1="20" x2="20" y2="35" stroke="#004439" stroke-width="2" stroke-linecap="round"/>
+</svg> 

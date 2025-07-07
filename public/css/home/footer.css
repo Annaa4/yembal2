@@ -1,0 +1,195 @@
+/* ===========================================
+   LAYOUT POUR FOOTER STICKY
+=========================================== */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* ===========================================
+   FOOTER STYLES - DESIGN HORIZONTAL MINIMALISTE
+=========================================== */
+.footer {
+  background: var(--white);
+  border-top: 1px solid #E5E7EB;
+  margin-top: auto;
+  padding: 1.5rem 0;
+}
+
+.footer__container {
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ===========================================
+   SECTION DROITE (Liens + Réseaux sociaux)
+=========================================== */
+.footer__right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ===========================================
+   SECTION BRAND (Icône + Texte)
+=========================================== */
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.footer__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__text {
+  color: #3B605A;
+  font-family: "Open Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 200% */
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ===========================================
+   LIENS DE NAVIGATION
+=========================================== */
+.footer__links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer__link {
+  color: #3B605A;
+  font-family: "Open Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 200% */
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.footer__link:hover {
+  color: var(--Color-Principal);
+}
+
+/* ===========================================
+   RÉSEAUX SOCIAUX
+=========================================== */
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  text-decoration: none;
+  background: #F1F4F4;
+  border-radius: 50%; /* Cercle parfait */
+}
+
+.footer__social-link img {
+  width: 14px;
+  height: 14px;
+}
+
+/* ===========================================
+   RESPONSIVE MOBILE
+=========================================== */
+@media (max-width: 767px) {
+  .footer {
+    padding: 2rem 0;
+  }
+  
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer__brand {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .footer__text {
+    font-size: 10px;
+    line-height: 20px;
+    text-align: center;
+    white-space: normal;
+  }
+  
+  .footer__right {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .footer__links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .footer__link {
+    font-size: 10px;
+    line-height: 20px;
+  }
+  
+  .footer__social {
+    justify-content: center;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE TABLET
+=========================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer__container {
+    gap: 1.5rem;
+  }
+  
+  .footer__right {
+    gap: 1.5rem;
+  }
+  
+  .footer__links {
+    gap: 1.5rem;
+  }
+  
+  .footer__text {
+    font-size: 10px;
+    line-height: 20px;
+  }
+  
+  .footer__link {
+    font-size: 10px;
+    line-height: 20px;
+  }
+} 

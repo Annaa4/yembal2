@@ -1,0 +1,59 @@
+<svg width="437" height="294" viewBox="0 0 437 294" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond de la carte -->
+  <rect width="437" height="294" rx="20" fill="white" fill-opacity="0.06"/>
+  <rect x="0.5" y="0.5" width="436" height="293" rx="19.5" stroke="white" stroke-opacity="0.1"/>
+  
+  <!-- Zones géographiques -->
+  <path d="M50 80 C80 60, 120 70, 150 90 L180 100 C200 110, 220 120, 240 100 L270 80 C300 60, 320 70, 350 90 L380 100 L380 180 C350 200, 300 190, 270 180 L240 170 C220 160, 200 150, 180 170 L150 190 C120 210, 80 200, 50 180 Z" fill="#004439" fill-opacity="0.1" stroke="#004439" stroke-opacity="0.3" stroke-width="1"/>
+  
+  <!-- Zone industrielle 1 -->
+  <circle cx="120" cy="100" r="25" fill="#3B8B7A" fill-opacity="0.2" stroke="#3B8B7A" stroke-width="2"/>
+  <circle cx="120" cy="100" r="8" fill="#3B8B7A"/>
+  <text x="120" y="135" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="500">Zone A</text>
+  
+  <!-- Zone industrielle 2 -->
+  <circle cx="250" cy="130" r="30" fill="#54827A" fill-opacity="0.2" stroke="#54827A" stroke-width="2"/>
+  <circle cx="250" cy="130" r="8" fill="#54827A"/>
+  <text x="250" y="170" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="500">Zone B</text>
+  
+  <!-- Zone industrielle 3 -->
+  <circle cx="350" cy="110" r="22" fill="#72A696" fill-opacity="0.2" stroke="#72A696" stroke-width="2"/>
+  <circle cx="350" cy="110" r="8" fill="#72A696"/>
+  <text x="350" y="140" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="500">Zone C</text>
+  
+  <!-- Points d'intérêt ressources -->
+  <circle cx="80" cy="120" r="4" fill="#F0B429"/>
+  <circle cx="180" cy="90" r="4" fill="#F0B429"/>
+  <circle cx="320" cy="150" r="4" fill="#F0B429"/>
+  <circle cx="290" cy="90" r="4" fill="#F0B429"/>
+  
+  <!-- Lignes de connexion -->
+  <line x1="120" y1="100" x2="250" y2="130" stroke="white" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="250" y1="130" x2="350" y2="110" stroke="white" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Routes principales -->
+  <path d="M30 200 Q120 180, 250 200 T400 190" stroke="white" stroke-opacity="0.2" stroke-width="3" fill="none"/>
+  <path d="M50 50 Q180 40, 300 60 T420 50" stroke="white" stroke-opacity="0.2" stroke-width="3" fill="none"/>
+  
+  <!-- Légende -->
+  <g transform="translate(30, 220)">
+    <rect x="0" y="0" width="150" height="60" rx="8" fill="white" fill-opacity="0.1" stroke="white" stroke-opacity="0.2"/>
+    <circle cx="15" cy="15" r="4" fill="#3B8B7A"/>
+    <text x="25" y="19" fill="white" font-family="Arial, sans-serif" font-size="9">Zones industrielles</text>
+    <circle cx="15" cy="30" r="3" fill="#F0B429"/>
+    <text x="25" y="34" fill="white" font-family="Arial, sans-serif" font-size="9">Ressources locales</text>
+    <line x1="15" y1="45" x2="25" y2="45" stroke="white" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="3,3"/>
+    <text x="30" y="49" fill="white" font-family="Arial, sans-serif" font-size="9">Connexions</text>
+  </g>
+  
+  <!-- Titre de la carte -->
+  <text x="218" y="30" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="600">Carte Interactive - Potentiel Industriel</text>
+  
+  <!-- Indicateurs de performance -->
+  <g transform="translate(300, 220)">
+    <rect x="0" y="0" width="120" height="50" rx="8" fill="white" fill-opacity="0.1" stroke="white" stroke-opacity="0.2"/>
+    <text x="10" y="15" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="500">Potentiel détecté:</text>
+    <text x="10" y="28" fill="#3B8B7A" font-family="Arial, sans-serif" font-size="10" font-weight="600">3 zones actives</text>
+    <text x="10" y="41" fill="#F0B429" font-family="Arial, sans-serif" font-size="10" font-weight="600">12 ressources</text>
+  </g>
+</svg> 

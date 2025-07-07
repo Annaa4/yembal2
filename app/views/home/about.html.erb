@@ -1,0 +1,445 @@
+<% content_for :extern_css do %>
+  <link rel="stylesheet" href="/css/home/header.css">
+  <link rel="stylesheet" href="/css/home/footer.css">
+  <link rel="stylesheet" href="/css/home/about.css">
+<% end %>
+
+<% content_for :extern_js do %>
+  <script src="/js/header.js"></script>
+<% end %>
+
+<%= render "home/partials/header" %>
+
+<!-- Ajustement pour header fixe -->
+<main class="main-content">
+  
+  <!-- Section Hero -->
+  <section class="hero-section">
+    <div class="container">
+      <!-- Badge À propos avec icône -->
+      <div class="hero-badge">
+        <img src="/images/yemb.svg" alt="Yembal icon" class="hero-badge__icon">
+        <span class="hero-badge__text">À propos</span>
+      </div>
+      
+      <h1 class="hero-title">
+        Bienvenue dans l'avenir de<br>
+        l'entrepreneuriat industriel au Sénégal.
+      </h1>
+      
+      <div class="hero-card">
+        <div class="hero-card__content">
+          <div class="hero-card__left">
+            <div class="vision-badge">La vision</div>
+            <p class="hero-card__text">
+              Yembal est conçu comme un levier stratégique permettant à l'ADEPME 
+              d'accélérer l'industrialisation et de renforcer la souveraineté économique du 
+              Sénégal. Sa vision s'aligne sur la Vision Sénégal 2050 et la Stratégie de 
+              Transformation Industrielle du Sénégal. L'objectif est de faire du Sénégal un 
+              hub industriel compétitif où les PME jouent un rôle central dans la création 
+              d'emplois, l'innovation et la transformation économique inclusive.
+            </p>
+          </div>
+          <div class="hero-card__right">
+            <img src="/images/team.png" alt="Équipe Yembal" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Mission de Yembal -->
+  <section class="mission-section">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-content">
+          <!-- Badge Mission -->
+          <div class="mission-badge">Mission de yembal</div>
+          
+          <h2 class="mission-title">
+            Démocratiser l'accès aux opportunités industrielles<br>
+            et catalyser la croissance économique du Sénégal<br>
+            en permettant à chaque entrepreneur de
+          </h2>
+          
+          <ul class="mission-list">
+            <li>
+              <div class="mission-check-icon">
+                <img src="/images/check-icon.svg" alt="Check" />
+              </div>
+              <span>Identifier rapidement les meilleures opportunités industrielles</span>
+            </li>
+            <li>
+              <div class="mission-check-icon">
+                <img src="/images/check-icon.svg" alt="Check" />
+              </div>
+              <span>Accéder aux ressources essentielles pour réussir</span>
+            </li>
+            <li>
+              <div class="mission-check-icon">
+                <img src="/images/check-icon.svg" alt="Check" />
+              </div>
+              <span>Contribuer au développement durable du pays</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="mission-visual">
+          <div class="visual-grid">
+            <!-- Ligne 1: Image industrielle + Icône feuilles -->
+            <div class="visual-top-row">
+              <div class="visual-item visual-item--photo">
+                <img src="/images/work.png" alt="Travailleur industriel" />
+              </div>
+              
+              <div class="visual-item visual-item--icon visual-item--leaf">
+                <img src="/images/leaf.svg" alt="Icône feuilles" />
+              </div>
+            </div>
+            
+            <!-- Ligne 2: Groupement des éléments -->
+            <div class="visual-bottom-wrapper">
+              <!-- Groupe: Zone vide + Globe + Flèches -->
+              <div class="visual-icons-group">
+                <div class="visual-item visual-item--placeholder">
+                  <!-- Zone vide avec bordure verte -->
+                </div>
+                <div class="visual-icons-groups">
+                  <div class="visual-item visual-item--icon visual-item--globe">
+                    <img src="/images/globe.svg" alt="Icône globe" />
+                  </div>
+                  
+                  <div class="visual-item visual-item--icon visual-item--arrows">
+                    <img src="/images/arrowg.svg" alt="Icône flèches" />
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Image girl séparée -->
+              <div class="visual-item visual-item--photo">
+                <img src="/images/girl.png" alt="Entrepreneur dans atelier" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Piliers ADEPME -->
+  <section class="pillars-section">
+    <div class="container">
+      <h2 class="section-title centered">
+        À travers Yembal, l'ADEPME travaille<br>
+        activement pour...
+      </h2>
+      
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="pillar-content">
+            <div class="pillar-icon">
+              <img src="/images/depend.svg" alt="Icône dépendance" />
+            </div>
+            <h3>Réduire la dépendance aux importations</h3>
+          </div>
+        </div>
+        
+        <div class="pillar">
+          <div class="pillar-content">
+            <div class="pillar-icon">
+              <img src="/images/emploi.svg" alt="Icône emploi" />
+            </div>
+            <h3>Créer des emplois industriels durables</h3>
+          </div>
+        </div>
+        
+        <div class="pillar">
+          <div class="pillar-content">
+            <div class="pillar-icon">
+              <img src="/images/ressource.svg" alt="Icône ressources" />
+            </div>
+            <h3>Valoriser les ressources locales</h3>
+          </div>
+        </div>
+        
+        <div class="pillar">
+          <div class="pillar-content">
+            <div class="pillar-icon">
+              <img src="/images/innov.svg" alt="Icône innovation" />
+            </div>
+            <h3>Stimuler l'innovation et l'entrepreneuriat</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Parcours IA -->
+  <section class="ai-journey-section">
+    <div class="container">
+      <div class="ai-journey-card">
+        <img src="/images/whiteu.svg" alt="Icône Yembal" class="journey-logo" />
+        <div class="journey-header">
+          <h2 class="section-title white">
+            Un parcours de lancement complet, amplifié par l'IA
+          </h2>
+        </div>
+        
+        <div class="journey-nav">
+          <button class="journey-tab active" data-tab="carte">Carte interactive</button>
+          <button class="journey-tab" data-tab="yembalko">Yembalko</button>
+          <button class="journey-tab" data-tab="accompagnement">Accompagnement ADEPME</button>
+        </div>
+        
+        <div class="journey-content-wrapper">
+          <div class="ai-journey-content">
+            <div class="journey-map">
+              <img id="journey-image" src="/images/journey-carte.svg" alt="Carte interactive" />
+            </div>
+            
+            <div class="journey-steps">
+              <!-- Contenu Carte interactive -->
+              <div class="journey-content active" data-content="carte">
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/journey-circles.svg" alt="Icône boules colorées" />
+                  </div>
+                  <p>Visualisez en temps réel les zones à fort potentiel industriel personnalisable</p>
+                </div>
+                
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/journey-dot.svg" alt="Icône point" />
+                  </div>
+                  <p>Découvrez la richesse en ressources propre à chaque région.</p>
+                </div>
+                
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/journey-plant.svg" alt="Icône plante" />
+                  </div>
+                  <p>Transformez les ressources et opportunités en projets industriels viables.</p>
+                </div>
+              </div>
+              
+              <!-- Contenu Yembalko -->
+              <div class="journey-content" data-content="yembalko">
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/camera-icon.svg" alt="Icône appareil photo" />
+                  </div>
+                  <p>Photographiez ou chargez l'image d'un produit importé</p>
+                </div>
+                
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/journey-circles.svg" alt="Icône boules colorées" />
+                  </div>
+                  <p>Notre IA analyse instantanément le produit et et identifie les opportunités de la produire localement.</p>
+                </div>
+                
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/document-icon.svg" alt="Icône document" />
+                  </div>
+                  <p>Recevez une fiche de projet industriel détaillée grâce à l'action de l'intelligence artificielle de Yembal.</p>
+                </div>
+              </div>
+              
+              <!-- Contenu Accompagnement ADEPME -->
+              <div class="journey-content" data-content="accompagnement">
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/star-icon.svg" alt="Icône étoile" />
+                  </div>
+                  <p>Accédez aux fonctionnalités poussées de génération d'un business plan complet</p>
+                </div>
+                
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/journey-circles.svg" alt="Icône boules colorées" />
+                  </div>
+                  <p>Bénéficiez d'un accompagnement tripartite entre l'ADEPME, ses partenaires et l'IA</p>
+                </div>
+                
+                <div class="journey-item">
+                  <div class="journey-icon journey-icon--image">
+                    <img src="/images/journey-circles.svg" alt="Icône boules colorées" />
+                  </div>
+                  <p>Faites vous accompagner pour accéder à des dispositifs de financement adéquats.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section IA Transformation -->
+  <section class="ai-transformation-section">
+    <div class="container">
+      <div class="transformation-card">
+        <div class="transformation-grid">
+          <div class="transformation-content">
+            <h2 class="section-title">
+              La puissance de l'IA au service de la<br>
+              transformation industrielle
+            </h2>
+            
+            <p class="transformation-description">
+              Notre intelligence artificielle, véritable catalyseur de l'industrialisation du<br>
+              Sénégal, analyse et exploite des millions de données pour :
+            </p>
+            
+            <div class="transformation-features">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <img src="/images/transformation-icon.svg" alt="Icône transformation" />
+                </div>
+                <span>Prédiction et Planification Stratégique</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <img src="/images/transformation-icon.svg" alt="Icône transformation" />
+                </div>
+                <span>Optimisation des Ressources Locales</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <img src="/images/transformation-icon.svg" alt="Icône transformation" />
+                </div>
+                <span>Transformation des Opportunités Nationales</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <img src="/images/transformation-icon.svg" alt="Icône transformation" />
+                </div>
+                <span>Impact Économique et Social</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="transformation-interface">
+            <img src="/images/ia.png" alt="Interface de l'application" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Comment Démarrer -->
+  <section class="how-to-start-section">
+    <div class="container">
+      <div class="how-to-start-card">
+        <div class="header-icon">
+          <img src="/images/header-step-icon.svg" alt="Icône démarrer" />
+        </div>
+        <div class="section-header">
+          <h2 class="section-title centered">Comment Démarrer?</h2>
+          
+        </div>
+        
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-icon">
+              <img src="/images/transformation-icon.svg" alt="Icône étape" />
+            </div>
+            <div class="step-content">
+              <h3>Carte interactive</h3>
+              <p>Découvrez les opportunités industrielles dans votre région d'intérêt</p>
+            </div>
+          </div>
+          
+          <div class="step">
+            <div class="step-icon">
+              <img src="/images/transformation-icon.svg" alt="Icône étape" />
+            </div>
+            <div class="step-content">
+              <h3>Utilisez l'option yembalko</h3>
+              <p>Ne débattez plus de notre dépendance aux importations. Passez à l'action.</p>
+            </div>
+          </div>
+          
+          <div class="step">
+            <div class="step-icon">
+              <img src="/images/transformation-icon.svg" alt="Icône étape" />
+            </div>
+            <div class="step-content">
+              <h3>Personnalisez Votre Expérience</h3>
+              <p>Créez votre compte pour recevoir un suivi sur mesure tout au long de votre parcours.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="start-cta">
+          <button class="btn btn--primary">Commencer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Section Rejoindre -->
+  <section class="join-section">
+    <div class="container">
+      <div class="transformation-card">
+        <div class="transformation-grid">
+          <div class="transformation-content">
+            <h2 class="section-title">
+              Rejoignez la Révolution Industrielle
+            </h2>
+            
+            <p class="transformation-description">
+              Avec Yembal, vous n'êtes plus seul dans votre parcours entrepreneurial.
+              Notre plateforme vous donne accès aux outils, aux données et aux ressources nécessaires pour transformer votre vision en réalité.
+              Prêt à découvrir votre prochaine opportunité? Commencez dès aujourd'hui avec Yembal.
+            </p>
+          
+            
+            <button class="btn btn--primary">Explorer les opportunités</button>
+          </div>
+          
+          <div class="transformation-interface">
+            <div class="join-illustrations">
+              <div class="illustration-item illustration-carton">
+                <img src="/images/carton.svg" alt="Carton ouvert avec produit" />
+              </div>
+              <div class="illustration-item illustration-bol">
+                <img src="/images/bol.svg" alt="Entonnoir avec bouteilles" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Final -->
+  <section class="final-section">
+    <div class="container">
+      <div class="final-card">
+        <div class="final-grid">
+          <div class="final-content">
+            <h3>Ne manquez pas les prochaines évolutions<br> de Yembal</h3>
+          </div>
+          
+          <div class="final-form">
+            <form class="newsletter-form">
+              <input type="email" placeholder="Votre adresse email" />
+              <button type="submit" class="btn btn--primary">S'inscrire</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<%= render "home/partials/footer" %>
+
+<% content_for :extern_js do %>
+  <script src="/js/journey-tabs.js"></script>
+<% end %> 

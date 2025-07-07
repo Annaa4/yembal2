@@ -1,0 +1,9 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#F5F8F7"/>
+  <rect x="50" y="140" width="300" height="40" fill="#004439"/>
+  <rect x="100" y="100" width="60" height="40" fill="#6BBE46"/>
+  <rect x="240" y="110" width="40" height="30" fill="#6BBE46"/>
+  <circle cx="200" cy="70" r="25" fill="#004439"/>
+  <rect x="180" y="90" width="40" height="60" fill="#004439"/>
+  <text x="200" y="195" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Entrepreneur en atelier</text>
+</svg> 

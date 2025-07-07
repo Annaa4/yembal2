@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  available_resources: MyText
+  market_opportunity: MyText
+  latitude: 9.99
+  longitude: 9.99
+  location_name: MyString
+  estimated_budget: 9.99
+  active: false
+  tags: MyText
+  strategic_alignment: MyString
+  sector: one
+
+two:
+  name: MyString
+  description: MyText
+  available_resources: MyText
+  market_opportunity: MyText
+  latitude: 9.99
+  longitude: 9.99
+  location_name: MyString
+  estimated_budget: 9.99
+  active: false
+  tags: MyText
+  strategic_alignment: MyString
+  sector: two

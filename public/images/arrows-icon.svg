@@ -1,0 +1,10 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Flèche vers le haut -->
+  <path d="M20 8L15 13L17.5 13L17.5 19L22.5 19L22.5 13L25 13L20 8Z" fill="#004439"/>
+  
+  <!-- Flèche vers le bas -->
+  <path d="M20 32L25 27L22.5 27L22.5 21L17.5 21L17.5 27L15 27L20 32Z" fill="#004439"/>
+  
+  <!-- Ligne centrale -->
+  <line x1="20" y1="16" x2="20" y2="24" stroke="#004439" stroke-width="1" stroke-dasharray="2,2"/>
+</svg> 
