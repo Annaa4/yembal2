@@ -6,6 +6,5 @@ class HomeController < ApplicationController
   end
 
   def carte
-    # Page démo de la carte interactive optimisée
   end
 end

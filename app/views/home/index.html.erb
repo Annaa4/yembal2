@@ -1,20 +1,315 @@
 <% content_for :extern_css do %>
   <link rel="stylesheet" href="/css/home/header.css">
+  <link rel="stylesheet" href="/css/home/landing.css">
   <link rel="stylesheet" href="/css/home/footer.css">
 <% end %>
 
 <% content_for :extern_js do %>
   <script src="/js/header.js"></script>
+  <script src="/js/landing.js"></script>
 <% end %>
 
 <%= render "home/partials/header" %>
 
-<!-- Contenu principal de la page d'accueil -->
-<main class="main-content">
-  <div class="container">
-    <h1>Bienvenue sur Yembal</h1>
-    <p>Découvrez les opportunités d'investissement au Sénégal</p>
+<div class="landing-container">
+  <!-- Sidebar gauche avec filtres -->
+  <aside class="landing-sidebar">
+    <div class="sidebar-mobile-controls">
+      <!-- Dropdown vue mobile -->
+      <div class="mobile-view-selector view-selector">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="23" viewBox="0 0 28 23" fill="none" class="selector-icon-left">
+          <path d="M1 20.9848L3.20268 9.45241L8.47243 6.54688L14.0693 9.45241L19.6582 6.54688L24.9266 9.45241L27 20.7263L20.5212 18.019L14.0761 20.9848L7.56496 17.9761L1 20.9848Z" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M8.47191 6.54688L7.56445 17.9761" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M14.0703 9.45312L14.077 20.9855" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M19.6582 6.54688L20.5212 18.019" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M14.0901 12.3043C16.308 8.8768 17.8228 6.79454 17.8228 4.73264C17.8228 2.67074 16.152 1 14.0901 1C12.0282 1 10.3574 2.67074 10.3574 4.73264C10.3574 6.79454 11.8722 8.8768 14.0901 12.3043Z" fill="#59B224" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14.0909 6.19935C14.8401 6.19935 15.4474 5.59202 15.4474 4.84284C15.4474 4.09366 14.8401 3.48633 14.0909 3.48633C13.3417 3.48633 12.7344 4.09366 12.7344 4.84284C12.7344 5.59202 13.3417 6.19935 14.0909 6.19935Z" fill="white"/>
+        </svg>
+        <span class="selected-view-text">Vue carte</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" class="selector-icon-right">
+          <path d="M1 1L8 8L15 1" stroke="#6BBE46" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="view-options">
+          <div class="view-option" data-view="map">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="23" viewBox="0 0 28 23" fill="none">
+              <path d="M1 20.9848L3.20268 9.45241L8.47243 6.54688L14.0693 9.45241L19.6582 6.54688L24.9266 9.45241L27 20.7263L20.5212 18.019L14.0761 20.9848L7.56496 17.9761L1 20.9848Z" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M8.47191 6.54688L7.56445 17.9761" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M14.0703 9.45312L14.077 20.9855" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M19.6582 6.54688L20.5212 18.019" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M14.0901 12.3043C16.308 8.8768 17.8228 6.79454 17.8228 4.73264C17.8228 2.67074 16.152 1 14.0901 1C12.0282 1 10.3574 2.67074 10.3574 4.73264C10.3574 6.79454 11.8722 8.8768 14.0901 12.3043Z" fill="#59B224" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14.0909 6.19935C14.8401 6.19935 15.4474 5.59202 15.4474 4.84284C15.4474 4.09366 14.8401 3.48633 14.0909 3.48633C13.3417 3.48633 12.7344 4.09366 12.7344 4.84284C12.7344 5.59202 13.3417 6.19935 14.0909 6.19935Z" fill="white"/>
+            </svg>
+            Vue carte
+          </div>
+          <div class="view-option" data-view="list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="0.75" y="8.75" width="20.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+              <rect x="0.75" y="0.75" width="12.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+              <rect x="0.75" y="16.75" width="20.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+            </svg>
+            Vue liste
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="filters-container" id="filtersContainer">
+      <div class="tags-section">
+        <div class="tags-header">
+          <h4>Mots-clés populaires</h4>
+          <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="toggle-icon" id="toggleSidebar">
+            <path d="M7.4 4.59961L2 9.99961L7.4 15.3996" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12.8008 1V19" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="tags-grid">
+          <div class="tag-item" data-tag="agriculture" data-sector="Agriculture">
+            <span>Agriculture</span>
+            <span class="tag-count">+12</span>
+          </div>
+          <div class="tag-item" data-tag="industrie" data-sector="Industrie">
+            <span>Industrie</span>
+            <span class="tag-count">+8</span>
+          </div>
+          <div class="tag-item" data-tag="technologie" data-sector="Technologie">
+            <span>Technologie</span>
+            <span class="tag-count">+6</span>
+          </div>
+          <div class="tag-item" data-tag="energie" data-sector="Énergie">
+            <span>Énergie</span>
+            <span class="tag-count">+5</span>
+          </div>
+          <div class="tag-item" data-tag="transport" data-sector="Transport">
+            <span>Transport</span>
+            <span class="tag-count">+4</span>
+          </div>
+          <div class="tag-item" data-tag="sante" data-sector="Santé">
+            <span>Santé</span>
+            <span class="tag-count">+7</span>
+          </div>
+          <div class="tag-item" data-tag="tourisme" data-sector="Tourisme">
+            <span>Tourisme</span>
+            <span class="tag-count">+5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Zone principale -->
+  <main class="landing-main">
+    <div class="main-top-controls">
+      <div class="search-wrapper">
+        <form class="search-form" id="searchForm">
+          <input type="text" placeholder="Rechercher par mots-clés, secteur d'activité..." class="search-input" id="searchInput" autocomplete="off">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="search-icon">
+          <path d="M15.649 15.6499C18.5299 12.769 18.5299 8.09816 15.649 5.21725C12.7681 2.33634 8.09725 2.33634 5.21635 5.21725C2.33544 8.09816 2.33544 12.769 5.21635 15.6499C8.09725 18.5308 12.7681 18.5308 15.649 15.6499Z" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22.6036 22.6055L15.6484 15.6504" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        </form>
+      </div>
+      
+      <!-- Dropdown vue desktop -->
+      <div class="desktop-view-selector view-selector">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="23" viewBox="0 0 28 23" fill="none" class="selector-icon-left">
+          <path d="M1 20.9848L3.20268 9.45241L8.47243 6.54688L14.0693 9.45241L19.6582 6.54688L24.9266 9.45241L27 20.7263L20.5212 18.019L14.0761 20.9848L7.56496 17.9761L1 20.9848Z" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M8.47191 6.54688L7.56445 17.9761" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M14.0703 9.45312L14.077 20.9855" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M19.6582 6.54688L20.5212 18.019" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+          <path d="M14.0901 12.3043C16.308 8.8768 17.8228 6.79454 17.8228 4.73264C17.8228 2.67074 16.152 1 14.0901 1C12.0282 1 10.3574 2.67074 10.3574 4.73264C10.3574 6.79454 11.8722 8.8768 14.0901 12.3043Z" fill="#59B224" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14.0909 6.19935C14.8401 6.19935 15.4474 5.59202 15.4474 4.84284C15.4474 4.09366 14.8401 3.48633 14.0909 3.48633C13.3417 3.48633 12.7344 4.09366 12.7344 4.84284C12.7344 5.59202 13.3417 6.19935 14.0909 6.19935Z" fill="white"/>
+        </svg>
+        <span class="selected-view-text">Vue carte</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none" class="selector-icon-right">
+          <path d="M1 1L8 8L15 1" stroke="#6BBE46" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="view-options">
+          <div class="view-option" data-view="map">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="23" viewBox="0 0 28 23" fill="none">
+              <path d="M1 20.9848L3.20268 9.45241L8.47243 6.54688L14.0693 9.45241L19.6582 6.54688L24.9266 9.45241L27 20.7263L20.5212 18.019L14.0761 20.9848L7.56496 17.9761L1 20.9848Z" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M8.47191 6.54688L7.56445 17.9761" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M14.0703 9.45312L14.077 20.9855" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M19.6582 6.54688L20.5212 18.019" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+              <path d="M14.0901 12.3043C16.308 8.8768 17.8228 6.79454 17.8228 4.73264C17.8228 2.67074 16.152 1 14.0901 1C12.0282 1 10.3574 2.67074 10.3574 4.73264C10.3574 6.79454 11.8722 8.8768 14.0901 12.3043Z" fill="#59B224" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14.0909 6.19935C14.8401 6.19935 15.4474 5.59202 15.4474 4.84284C15.4474 4.09366 14.8401 3.48633 14.0909 3.48633C13.3417 3.48633 12.7344 4.09366 12.7344 4.84284C12.7344 5.59202 13.3417 6.19935 14.0909 6.19935Z" fill="white"/>
+            </svg>
+            Vue carte
+          </div>
+          <div class="view-option" data-view="list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="0.75" y="8.75" width="20.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+              <rect x="0.75" y="0.75" width="12.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+              <rect x="0.75" y="16.75" width="20.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+            </svg>
+            Vue liste
+          </div>
+        </div>
+      </div>
+      
+      <div class="controls-separator"></div>
+      
+      <button class="yembalko-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="17" viewBox="0 0 21 17" fill="none" class="btn-icon-left">
+          <path d="M14.9262 2.48848C14.2391 2.48848 13.682 1.93141 13.682 1.24424C13.682 0.557065 13.1249 0 12.4378 0H8.29003C7.60285 0 7.04579 0.557065 7.04579 1.24424C7.04579 1.93141 6.48872 2.48848 5.80155 2.48848H3.52289C1.57725 2.48848 0 4.06573 0 6.01137V13C0 15.2091 1.79086 17 4 17H16.7278C18.9369 17 20.7278 15.2091 20.7278 13V6.01137C20.7278 4.06573 19.1505 2.48848 17.2049 2.48848H14.9262Z" fill="#004439"/>
+          <path d="M10.3636 13.3707C12.3679 13.3707 13.9927 11.7458 13.9927 9.74148C13.9927 7.73714 12.3679 6.1123 10.3636 6.1123C8.35921 6.1123 6.73438 7.73714 6.73438 9.74148C6.73438 11.7458 8.35921 13.3707 10.3636 13.3707Z" fill="white"/>
+        </svg>
+        <span>Yembalko</span>
+      </button>
+    </div>
+
+    <div class="results-section">
+      <h2>Les opportunités industrielles trouvées <span>(47)</span></h2>
+      <img src="/images/globe-icon.svg" alt="Info" class="info-icon">
+    </div>
+
+    <!-- Vue carte -->
+    <div class="map-view">
+      <div id="opportunitiesMap" class="interactive-map">
+        <!-- Placeholder pour la carte -->
+        <div class="map-placeholder">
+          <img src="/images/journey-carte.svg" alt="Carte du Sénégal" class="map-image">
+          <div class="map-overlay">
+            <div class="map-markers">
+              <!-- Marqueurs statiques d'exemple -->
+              <div class="map-marker" style="top: 35%; left: 45%;" data-opportunity-id="1">
+                <div class="marker-dot"></div>
+                <div class="marker-popup">
+                  <h3>Projet Agricole Dakar</h3>
+                  <p>Agriculture • Dakar</p>
+                </div>
+              </div>
+              <div class="map-marker" style="top: 25%; left: 40%;" data-opportunity-id="2">
+                <div class="marker-dot"></div>
+                <div class="marker-popup">
+                  <h3>Centre Technologique</h3>
+                  <p>Technologie • Thiès</p>
+                </div>
+              </div>
+              <div class="map-marker" style="top: 65%; left: 35%;" data-opportunity-id="3">
+                <div class="marker-dot"></div>
+                <div class="marker-popup">
+                  <h3>Industrie Textile</h3>
+                  <p>Industrie • Casamance</p>
+                </div>
+              </div>
+              <div class="map-marker" style="top: 15%; left: 50%;" data-opportunity-id="4">
+                <div class="marker-dot"></div>
+                <div class="marker-popup">
+                  <h3>Ferme Solaire</h3>
+                  <p>Énergie • Saint-Louis</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Vue liste (cachée par défaut) -->
+    <div class="list-view hidden">
+      <div class="opportunities-grid">
+        <div class="opportunity-card" data-project-id="1">
+          <div class="card-content">
+            <h3>Projet Agricole Innovant</h3>
+            <div class="card-location">
+              <img src="/images/globe-icon.svg" alt="Localisation">
+              <span>Dakar, Sénégal</span>
+            </div>
+          </div>
+          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
+        </div>
+        <div class="opportunity-card" data-project-id="2">
+          <div class="card-content">
+            <h3>Centre Technologique</h3>
+            <div class="card-location">
+              <img src="/images/globe-icon.svg" alt="Localisation">
+              <span>Thiès, Sénégal</span>
+            </div>
+          </div>
+          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
+        </div>
+        <div class="opportunity-card" data-project-id="3">
+          <div class="card-content">
+            <h3>Industrie Textile Moderne</h3>
+            <div class="card-location">
+              <img src="/images/globe-icon.svg" alt="Localisation">
+              <span>Casamance, Sénégal</span>
+            </div>
+          </div>
+          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
+        </div>
+        <div class="opportunity-card" data-project-id="4">
+          <div class="card-content">
+            <h3>Ferme Solaire</h3>
+            <div class="card-location">
+              <img src="/images/globe-icon.svg" alt="Localisation">
+              <span>Saint-Louis, Sénégal</span>
+            </div>
+          </div>
+          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Modale détails projet -->
+<div class="modal-overlay project-modal" id="projectModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <img src="/images/logo-yembal.svg" alt="Logo" class="modal-logo">
+      <h2>Détails de l'opportunité</h2>
+      <button class="modal-close">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="project-section">
+        <h3 class="project-title">Titre du projet</h3>
+        <p class="project-description">Description détaillée du projet d'investissement...</p>
+      </div>
+      <div class="project-section">
+        <h4>Ressources nécessaires</h4>
+        <p class="project-resources">Détails des ressources requises...</p>
+      </div>
+      <div class="project-section">
+        <h4>Marché ciblé</h4>
+        <p class="project-market">Informations sur le marché et les opportunités...</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="project-action-btn">
+        <span>Continuer avec ce projet</span>
+      </button>
+    </div>
   </div>
-</main>
+</div>
+
+<!-- Modale Yembalko -->
+<div class="modal-overlay yembalko-modal" id="yembalkoModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <img src="/images/logo-yembal.svg" alt="Logo" class="modal-logo">
+      <h2>Yembalko - Identifier une opportunité</h2>
+      <button class="modal-close">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-description">
+        Prenez une photo de votre environnement et notre IA identifiera les opportunités d'investissement potentielles.
+      </p>
+      <div class="upload-section">
+        <p class="upload-info">
+          Formats acceptés : JPG, PNG, HEIC<br>
+          Taille maximale : 10 MB
+        </p>
+        <label class="upload-button">
+          Choisir une photo
+          <input type="file" accept="image/jpeg,image/png,image/heic" hidden class="file-input">
+        </label>
+        <div class="upload-loader">
+          <div class="loader" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= render "home/partials/footer" %>
