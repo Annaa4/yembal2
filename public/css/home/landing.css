@@ -43,7 +43,9 @@
    SIDEBAR FILTRES
 =========================================== */
 .landing-sidebar {
-  width: var(--sidebar-width);
+  width: 440px;
+  min-width: 440px;
+  max-width: 440px;
   padding: 26px 33px;
   border-right: 1px solid #DDE9E7;
   transition: width var(--transition-base), padding var(--transition-base);
@@ -152,13 +154,13 @@
 }
 
 /* Grille des tags */
-.tags-grid {
+.tags-grid, .tags-list {
   display: flex;
   flex-wrap: wrap;
   gap: 17px;
+  padding-right: 5px;
   max-height: 410px;
   overflow-y: auto;
-  padding-right: 5px;
 }
 
 .tags-grid::-webkit-scrollbar {
@@ -190,7 +192,21 @@
   transition: all 0.2s ease;
   border-radius: 30px;
   background: #E5ECEB;
-  min-width: fit-content;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tag-item span {
+  color: #7E9894;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tag-item .tag-count {
+  color: #6BBE46 !important;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 6px;
 }
 
 .tag-item:hover {
@@ -199,26 +215,10 @@
 
 .tag-item.active {
   background: #6BBE46;
-  border-color: #6BBE46;
 }
 
-.tag-item.active span,
-.tag-item.active .tag-count {
-  color: var(--white) !important;
-}
-
-.tag-item span {
-  color: #7E9894;
-  font-size: 12px;
-  font-weight: 400;
-  white-space: nowrap;
-}
-
-.tag-count {
-  color: #6BBE46 !important;
-  font-size: 12px;
-  font-weight: 400;
-  white-space: nowrap;
+.tag-item.active span {
+  color: white;
 }
 
 /* ===========================================
@@ -917,6 +917,7 @@
   }
 
   .tags-grid {
+    gap: 12px;
     max-height: 300px;
   }
 }

@@ -2,11 +2,15 @@
   <link rel="stylesheet" href="/css/home/header.css">
   <link rel="stylesheet" href="/css/home/landing.css">
   <link rel="stylesheet" href="/css/home/footer.css">
+  <link rel="stylesheet" href="/css/tests/map1.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <% end %>
 
 <% content_for :extern_js do %>
   <script src="/js/header.js"></script>
   <script src="/js/landing.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/js/tests/map1.js"></script>
 <% end %>
 
 <%= render "home/partials/header" %>
@@ -63,34 +67,12 @@
           </svg>
         </div>
         <div class="tags-grid">
-          <div class="tag-item" data-tag="agriculture" data-sector="Agriculture">
-            <span>Agriculture</span>
-            <span class="tag-count">+12</span>
-          </div>
-          <div class="tag-item" data-tag="industrie" data-sector="Industrie">
-            <span>Industrie</span>
-            <span class="tag-count">+8</span>
-          </div>
-          <div class="tag-item" data-tag="technologie" data-sector="Technologie">
-            <span>Technologie</span>
-            <span class="tag-count">+6</span>
-          </div>
-          <div class="tag-item" data-tag="energie" data-sector="Énergie">
-            <span>Énergie</span>
-            <span class="tag-count">+5</span>
-          </div>
-          <div class="tag-item" data-tag="transport" data-sector="Transport">
-            <span>Transport</span>
-            <span class="tag-count">+4</span>
-          </div>
-          <div class="tag-item" data-tag="sante" data-sector="Santé">
-            <span>Santé</span>
-            <span class="tag-count">+7</span>
-          </div>
-          <div class="tag-item" data-tag="tourisme" data-sector="Tourisme">
-            <span>Tourisme</span>
-            <span class="tag-count">+5</span>
-          </div>
+          <% @popular_tags.each do |item| %>
+            <div class="tag-item" data-tag="<%= item[:name] %>">
+              <span class="tag-name"><%= item[:name] %></span>
+              <span class="tag-count">+<%= item[:count] %></span>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -101,11 +83,16 @@
     <div class="main-top-controls">
       <div class="search-wrapper">
         <form class="search-form" id="searchForm">
-          <input type="text" placeholder="Rechercher par mots-clés, secteur d'activité..." class="search-input" id="searchInput" autocomplete="off">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="search-icon">
-          <path d="M15.649 15.6499C18.5299 12.769 18.5299 8.09816 15.649 5.21725C12.7681 2.33634 8.09725 2.33634 5.21635 5.21725C2.33544 8.09816 2.33544 12.769 5.21635 15.6499C8.09725 18.5308 12.7681 18.5308 15.649 15.6499Z" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M22.6036 22.6055L15.6484 15.6504" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+          <input type="text" 
+                 placeholder="Rechercher par mots-clés, secteur d'activité..." 
+                 class="search-input" 
+                 id="searchInput" 
+                 autocomplete="off"
+                 data-opportunities='<%= @opportunities_json.html_safe %>'>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="search-icon">
+            <path d="M15.649 15.6499C18.5299 12.769 18.5299 8.09816 15.649 5.21725C12.7681 2.33634 8.09725 2.33634 5.21635 5.21725C2.33544 8.09816 2.33544 12.769 5.21635 15.6499C8.09725 18.5308 12.7681 18.5308 15.649 15.6499Z" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22.6036 22.6055L15.6484 15.6504" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </form>
       </div>
       
@@ -158,96 +145,32 @@
     </div>
 
     <div class="results-section">
-      <h2>Les opportunités industrielles trouvées <span>(47)</span></h2>
+      <h2>Les opportunités industrielles trouvées <span>(<%= @opportunities.count %>)</span></h2>
       <img src="/images/globe-icon.svg" alt="Info" class="info-icon">
     </div>
 
-    <!-- Vue carte -->
+    <!-- Vue carte avec Leaflet -->
     <div class="map-view">
-      <div id="opportunitiesMap" class="interactive-map">
-        <!-- Placeholder pour la carte -->
-        <div class="map-placeholder">
-          <img src="/images/journey-carte.svg" alt="Carte du Sénégal" class="map-image">
-          <div class="map-overlay">
-            <div class="map-markers">
-              <!-- Marqueurs statiques d'exemple -->
-              <div class="map-marker" style="top: 35%; left: 45%;" data-opportunity-id="1">
-                <div class="marker-dot"></div>
-                <div class="marker-popup">
-                  <h3>Projet Agricole Dakar</h3>
-                  <p>Agriculture • Dakar</p>
-                </div>
-              </div>
-              <div class="map-marker" style="top: 25%; left: 40%;" data-opportunity-id="2">
-                <div class="marker-dot"></div>
-                <div class="marker-popup">
-                  <h3>Centre Technologique</h3>
-                  <p>Technologie • Thiès</p>
-                </div>
-              </div>
-              <div class="map-marker" style="top: 65%; left: 35%;" data-opportunity-id="3">
-                <div class="marker-dot"></div>
-                <div class="marker-popup">
-                  <h3>Industrie Textile</h3>
-                  <p>Industrie • Casamance</p>
-                </div>
-              </div>
-              <div class="map-marker" style="top: 15%; left: 50%;" data-opportunity-id="4">
-                <div class="marker-dot"></div>
-                <div class="marker-popup">
-                  <h3>Ferme Solaire</h3>
-                  <p>Énergie • Saint-Louis</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="map-container">
+        <div id="map" style="width: 100%; height: 100%;"></div>
       </div>
     </div>
     
     <!-- Vue liste (cachée par défaut) -->
     <div class="list-view hidden">
       <div class="opportunities-grid">
-        <div class="opportunity-card" data-project-id="1">
-          <div class="card-content">
-            <h3>Projet Agricole Innovant</h3>
-            <div class="card-location">
-              <img src="/images/globe-icon.svg" alt="Localisation">
-              <span>Dakar, Sénégal</span>
+        <% @opportunities.each do |opportunity| %>
+          <div class="opportunity-card" data-project-id="<%= opportunity.id %>">
+            <div class="card-content">
+              <h3><%= opportunity.name %></h3>
+              <div class="card-location">
+                <img src="/images/globe-icon.svg" alt="Localisation">
+                <span><%= opportunity.location_name %></span>
+              </div>
             </div>
+            <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
           </div>
-          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
-        </div>
-        <div class="opportunity-card" data-project-id="2">
-          <div class="card-content">
-            <h3>Centre Technologique</h3>
-            <div class="card-location">
-              <img src="/images/globe-icon.svg" alt="Localisation">
-              <span>Thiès, Sénégal</span>
-            </div>
-          </div>
-          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
-        </div>
-        <div class="opportunity-card" data-project-id="3">
-          <div class="card-content">
-            <h3>Industrie Textile Moderne</h3>
-            <div class="card-location">
-              <img src="/images/globe-icon.svg" alt="Localisation">
-              <span>Casamance, Sénégal</span>
-            </div>
-          </div>
-          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
-        </div>
-        <div class="opportunity-card" data-project-id="4">
-          <div class="card-content">
-            <h3>Ferme Solaire</h3>
-            <div class="card-location">
-              <img src="/images/globe-icon.svg" alt="Localisation">
-              <span>Saint-Louis, Sénégal</span>
-            </div>
-          </div>
-          <img src="/images/arrowg.svg" alt="Voir détails" class="card-arrow">
-        </div>
+        <% end %>
       </div>
     </div>
   </main>

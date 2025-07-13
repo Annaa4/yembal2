@@ -1,6 +1,5 @@
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 # Example:
 #
@@ -8,182 +7,115 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-puts "🌱 Création des secteurs..."
+puts "🌱 Création des opportunités d'investissement pour Yembal..."
 
-# Créer les secteurs principaux
-sectors_data = [
-  { name: "Agriculture", description: "Transformation et production agricole", color: "#59B224" },
-  { name: "Industrie", description: "Industrie manufacturière et transformation", color: "#004439" },
-  { name: "Énergie", description: "Énergies renouvelables et traditionnelles", color: "#FFC500" },
-  { name: "Numérique", description: "Technologies et services numériques", color: "#3B605A" },
-  { name: "Artisanat", description: "Artisanat et produits locaux", color: "#7E9894" },
-  { name: "Export", description: "Produits destinés à l'exportation", color: "#59B224" }
-]
+# Nettoyer les données existantes
+Opportunity.destroy_all
 
-sectors = {}
-sectors_data.each do |sector_data|
-  sector = Sector.find_or_create_by(name: sector_data[:name]) do |s|
-    s.description = sector_data[:description]
-    s.color = sector_data[:color]
-  end
-  sectors[sector_data[:name]] = sector
-  puts "  ✓ #{sector.name}"
-end
-
-puts "🏭 Création des opportunités d'exemple..."
-
-# Coordonnées des principales villes du Sénégal
-locations = [
-  { name: "Dakar", lat: 14.6928, lng: -17.4467 },
-  { name: "Thiès", lat: 14.7886, lng: -16.9246 },
-  { name: "Kaolack", lat: 14.1481, lng: -16.0736 },
-  { name: "Saint-Louis", lat: 16.0370, lng: -16.4951 },
-  { name: "Ziguinchor", lat: 12.5681, lng: -16.2729 },
-  { name: "Diourbel", lat: 14.6564, lng: -16.2414 },
-  { name: "Tambacounda", lat: 13.7671, lng: -13.6681 },
-  { name: "Kolda", lat: 12.8939, lng: -14.9419 },
-  { name: "Fatick", lat: 14.3347, lng: -16.4123 },
-  { name: "Kédougou", lat: 12.5592, lng: -12.1756 }
-]
-
-# Opportunités d'exemple
+# Créer des opportunités d'investissement avec coordonnées GPS réelles
 opportunities_data = [
   {
-    name: "Transformation de manioc en farine",
-    description: "Unité de transformation de manioc local en farine industrielle pour l'alimentation et l'exportation",
-    sector: "Agriculture",
-    location: "Fatick",
-    estimated_budget: 250_000_000,
-    tags: "agroalimentaire, transformation, manioc, farine, export",
-    available_resources: "Matières premières locales abondantes, main d'œuvre disponible",
-    market_opportunity: "Forte demande locale et régionale, potentiel d'exportation vers l'Afrique de l'Ouest"
+    name: "Ferme aquacole moderne à Saint-Louis",
+    description: "Développement d'une ferme aquacole moderne pour l'élevage de tilapia et de crevettes dans la région de Saint-Louis, près du fleuve Sénégal.",
+    latitude: 16.0201,
+    longitude: -16.4919,
+    location_name: "Saint-Louis",
+    estimated_budget: 1800000.00,
+    available_resources: "Accès à l'eau douce et salée, climat favorable, expertise locale",
+    market_opportunity: "Marché national et export vers l'Europe",
+    tags: "aquaculture, tilapia, crevettes, saint-louis",
+    active: true
   },
   {
-    name: "Assemblage de véhicules électriques",
-    description: "Centre d'assemblage de véhicules électriques pour le marché ouest-africain",
-    sector: "Industrie",
-    location: "Thiès",
-    estimated_budget: 2_500_000_000,
-    tags: "automobile, électrique, assemblage, industrie, innovation",
-    available_resources: "Zone industrielle équipée, main d'œuvre qualifiée",
-    market_opportunity: "Marché émergent des véhicules électriques en Afrique"
+    name: "Unité de transformation de riz à Kaolack",
+    description: "Création d'une unité moderne de transformation et de conditionnement de riz dans la région de Kaolack. Cette unité permettra de valoriser la production locale de riz et de réduire les importations.",
+    latitude: 14.1594,
+    longitude: -16.0736,
+    location_name: "Kaolack",
+    estimated_budget: 2500000.00,
+    available_resources: "Rizières productives, main-d'œuvre qualifiée, infrastructures de transport",
+    market_opportunity: "Marché national et sous-régional",
+    tags: "transformation, riz, agroalimentaire, kaolack",
+    active: true
   },
   {
-    name: "Production de panneaux solaires",
-    description: "Usine de fabrication de panneaux solaires photovoltaïques",
-    sector: "Énergie",
-    location: "Dakar",
-    estimated_budget: 1_800_000_000,
-    tags: "solaire, énergie, renouvelable, photovoltaïque, industrie",
-    available_resources: "Accès au port, infrastructure électrique",
-    market_opportunity: "Demande croissante en énergie solaire au Sénégal et dans la région"
+    name: "Centre de transformation de fruits à Thiès",
+    description: "Installation d'un centre de transformation et de conditionnement de fruits tropicaux (mangues, oranges, papayes) avec des technologies de conservation modernes.",
+    latitude: 14.7889,
+    longitude: -16.9261,
+    location_name: "Thiès",
+    estimated_budget: 3200000.00,
+    available_resources: "Production fruitière abondante, infrastructure routière, proximité des ports",
+    market_opportunity: "Export international et marché local",
+    tags: "fruits, transformation, export, thiès",
+    active: true
   },
   {
-    name: "Plateforme e-commerce agricole",
-    description: "Plateforme numérique de commercialisation des produits agricoles",
-    sector: "Numérique",
-    location: "Dakar",
-    estimated_budget: 150_000_000,
-    tags: "e-commerce, agriculture, plateforme, numérique, marketplace",
-    available_resources: "Hub technologique, développeurs qualifiés",
-    market_opportunity: "Digitalisation du secteur agricole"
+    name: "Mine d'or artisanale mécanisée à Kédougou",
+    description: "Modernisation d'exploitations aurifères artisanales avec introduction d'équipements mécanisés respectueux de l'environnement.",
+    latitude: 12.5595,
+    longitude: -12.1756,
+    location_name: "Kédougou",
+    estimated_budget: 5000000.00,
+    available_resources: "Gisements aurifères, main-d'œuvre expérimentée, cadre légal favorable",
+    market_opportunity: "Marché international de l'or",
+    tags: "or, mines, kédougou, artisanal",
+    active: true
   },
   {
-    name: "Atelier de maroquinerie artisanale",
-    description: "Production d'articles de maroquinerie haut de gamme pour l'export",
-    sector: "Artisanat",
-    location: "Saint-Louis",
-    estimated_budget: 85_000_000,
-    tags: "maroquinerie, artisanat, cuir, export, haut-gamme",
-    available_resources: "Tradition artisanale, matières premières locales",
-    market_opportunity: "Marché européen des produits artisanaux africains"
+    name: "Complexe touristique écologique en Casamance",
+    description: "Développement d'un complexe touristique écologique en Casamance, mettant en valeur la biodiversité et la culture locale.",
+    latitude: 12.5681,
+    longitude: -16.2748,
+    location_name: "Ziguinchor",
+    estimated_budget: 4500000.00,
+    available_resources: "Biodiversité exceptionnelle, culture riche, potentiel touristique",
+    market_opportunity: "Touristes internationaux et nationaux",
+    tags: "écotourisme, casamance, biodiversité, ziguinchor",
+    active: true
   },
   {
-    name: "Transformation d'anacarde",
-    description: "Unité de transformation d'anacarde en produits dérivés",
-    sector: "Agriculture",
-    location: "Ziguinchor",
-    estimated_budget: 180_000_000,
-    tags: "anacarde, transformation, agroalimentaire, export",
-    available_resources: "Production locale d'anacarde importante",
-    market_opportunity: "Demande internationale croissante pour les noix de cajou transformées"
+    name: "Usine textile moderne à Dakar",
+    description: "Création d'une usine textile moderne pour la production de vêtements destinés à l'export, utilisant du coton local.",
+    latitude: 14.6928,
+    longitude: -17.4467,
+    location_name: "Dakar",
+    estimated_budget: 6000000.00,
+    available_resources: "Coton local, main-d'œuvre qualifiée, infrastructures portuaires",
+    market_opportunity: "Export vers l'Europe et l'Amérique",
+    tags: "textile, export, coton, dakar",
+    active: true
   },
   {
-    name: "Centre de données écologique",
-    description: "Data center alimenté par des énergies renouvelables",
-    sector: "Numérique",
-    location: "Thiès",
-    estimated_budget: 950_000_000,
-    tags: "datacenter, cloud, écologique, numérique, infrastructure",
-    available_resources: "Connectivité fibre optique, climat favorable",
-    market_opportunity: "Demande croissante de services cloud en Afrique de l'Ouest"
+    name: "Ferme avicole intensive à Tambacounda",
+    description: "Développement d'une ferme avicole moderne avec 50,000 poules pondeuses et unité de transformation d'œufs.",
+    latitude: 13.7671,
+    longitude: -13.6675,
+    location_name: "Tambacounda",
+    estimated_budget: 1500000.00,
+    available_resources: "Terres disponibles, céréales locales, marché en croissance",
+    market_opportunity: "Marché national en expansion",
+    tags: "aviculture, œufs, tambacounda, élevage",
+    active: true
   },
   {
-    name: "Production de biocarburants",
-    description: "Usine de production de biocarburants à partir de déchets agricoles",
-    sector: "Énergie",
-    location: "Kaolack",
-    estimated_budget: 680_000_000,
-    tags: "biocarburant, déchets, énergie, durable, agriculture",
-    available_resources: "Abondance de déchets agricoles, position géographique centrale",
-    market_opportunity: "Transition énergétique et réduction des importations d'hydrocarbures"
-  },
-  {
-    name: "Filature de coton moderne",
-    description: "Unité moderne de filature et tissage du coton local",
-    sector: "Industrie",
-    location: "Tambacounda",
-    estimated_budget: 420_000_000,
-    tags: "coton, textile, filature, industrie, transformation",
-    available_resources: "Production cotonnière locale, main d'œuvre disponible",
-    market_opportunity: "Demande locale et sous-régionale de textiles"
-  },
-  {
-    name: "Extraction et transformation d'or",
-    description: "Mine et raffinerie d'or avec transformation locale",
-    sector: "Industrie",
-    location: "Kédougou",
-    estimated_budget: 3_200_000_000,
-    tags: "or, mine, extraction, transformation, métaux",
-    available_resources: "Gisements aurifères confirmés, infrastructure minière",
-    market_opportunity: "Cours de l'or favorable, demande internationale stable"
+    name: "Centrale solaire communautaire à Kolda",
+    description: "Installation d'une centrale solaire de 10 MW pour alimenter les communautés rurales de la région de Kolda.",
+    latitude: 12.8939,
+    longitude: -14.9405,
+    location_name: "Kolda",
+    estimated_budget: 8000000.00,
+    available_resources: "Ensoleillement optimal, terrain disponible, demande énergétique",
+    market_opportunity: "Communautés rurales et réseau national",
+    tags: "solaire, énergie, rural, kolda",
+    active: true
   }
 ]
 
 opportunities_data.each do |opp_data|
-  location = locations.find { |l| l[:name] == opp_data[:location] }
-  sector = sectors[opp_data[:sector]]
-
-  next unless location && sector
-
-  opportunity = Opportunity.find_or_create_by(
-    name: opp_data[:name],
-    sector: sector
-  ) do |opp|
-    opp.description = opp_data[:description]
-    opp.latitude = location[:lat]
-    opp.longitude = location[:lng]
-    opp.location_name = location[:name]
-    opp.estimated_budget = opp_data[:estimated_budget]
-    opp.tags = opp_data[:tags]
-    opp.available_resources = opp_data[:available_resources]
-    opp.market_opportunity = opp_data[:market_opportunity]
-    opp.active = true
-  end
-
-  puts "  ✓ #{opportunity.name} (#{opportunity.location_name})"
+  Opportunity.create!(opp_data)
 end
 
-puts ""
-puts "📊 Résumé des données créées :"
-puts "  • #{Sector.count} secteurs"
-puts "  • #{Opportunity.count} opportunités"
-puts "  • Répartition par secteur :"
-
-Sector.includes(:opportunities).each do |sector|
-  count = sector.opportunities.count
-  puts "    - #{sector.name}: #{count} opportunités"
-end
-
-puts ""
-puts "🎉 Seeds terminées avec succès !"
+puts "✅ Seeds créés avec succès !"
+puts "  💼 #{Opportunity.count} opportunités d'investissement"
+puts "  📍 Réparties sur #{Opportunity.pluck(:location_name).uniq.count} villes du Sénégal"

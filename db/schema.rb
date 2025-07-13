@@ -10,5 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 0) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_11_132303) do
+  create_table "opportunities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.string "location_name"
+    t.decimal "estimated_budget"
+    t.text "available_resources"
+    t.text "market_opportunity"
+    t.text "tags"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
