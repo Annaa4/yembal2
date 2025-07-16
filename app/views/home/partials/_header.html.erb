@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" data-controller="header">
   <div class="header__container">
     <!-- Logo -->
     <div class="header__logo">
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Menu hamburger (mobile) -->
-    <button class="header__mobile-toggle" aria-label="Menu" aria-expanded="false">
+    <button class="header__mobile-toggle" aria-label="Menu" aria-expanded="false" data-header-target="toggle">
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="22" viewBox="0 0 28 22" fill="none">
         <path d="M2 2H26.3" stroke="#004439" stroke-width="2.5" stroke-linecap="round"/>
         <path d="M2 11L17.3 11" stroke="#004439" stroke-width="2.5" stroke-linecap="round"/>
@@ -37,9 +37,9 @@
     </button>
 
     <!-- Navigation + CTA groupés -->
-    <div class="header__right">
+    <div class="header__right" data-header-target="rightPanel">
       <!-- Navigation -->
-      <nav class="header__nav">
+      <nav class="header__nav" data-header-target="nav">
         <ul class="nav-list">
           <li class="nav-item">
             <a href="/" class="nav-link nav-link--active">Accueil</a>

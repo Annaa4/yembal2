@@ -1,20 +1,136 @@
 <% content_for :extern_css do %>
   <link rel="stylesheet" href="/css/home/header.css">
   <link rel="stylesheet" href="/css/home/footer.css">
+  <link rel="stylesheet" href="/css/home/landing.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 <% end %>
 
 <% content_for :extern_js do %>
-  <script src="/js/header.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <% end %>
 
 <%= render "home/partials/header" %>
 
-<!-- Contenu principal de la page d'accueil -->
-<main class="main-content">
-  <div class="container">
-    <h1>Bienvenue sur Yembal</h1>
-    <p>Découvrez les opportunités d'investissement au Sénégal</p>
-  </div>
-</main>
+<div class="home-main-layout">
+  <aside class="sidebar-keywords" data-controller="sidebar">
+    <div data-sidebar-target="sidebar" class="filter-sidebar" id="filter-sidebar">
+      <div class="filter-container" id="filter-container">
+        <div class="filter-title-row">
+          <h4 class="filter-title">Mots-clés populaires</h4>
+          <button class="filter-toggle-btn" id="filter-toggle-btn" aria-label="Afficher/masquer les mots-clés" data-action="click->sidebar#toggle">
+            <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.4 4.59961L2 9.99961L7.4 15.3996" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M12.8008 1V19" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="keywords-list" id="keywords-list">
+          <div class="filter-keyword"><span class="filter-keyword-name">export</span> <span class="filter-keyword-count">+950</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">agroalimentaire</span> <span class="filter-keyword-count">+579</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">transformation</span> <span class="filter-keyword-count">+348</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">artisanat</span> <span class="filter-keyword-count">+286</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">Thiès</span> <span class="filter-keyword-count">+203</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">Fatick</span> <span class="filter-keyword-count">+186</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">Louga</span> <span class="filter-keyword-count">+185</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">Sédhiou</span> <span class="filter-keyword-count">+173</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">Kaffrine</span> <span class="filter-keyword-count">+160</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">énergie</span> <span class="filter-keyword-count">+156</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">numérique</span> <span class="filter-keyword-count">+153</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">industriel</span> <span class="filter-keyword-count">+147</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">Kédougou</span> <span class="filter-keyword-count">+140</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">industrie</span> <span class="filter-keyword-count">+139</span></div>
+          <div class="filter-keyword"><span class="filter-keyword-name">recyclage</span> <span class="filter-keyword-count">+127</span></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <section class="main-content">
+    <div class="view-switcher-wrapper" data-controller="view-switcher">
+      <div class="search-bar-row">
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Rechercher par mot-clé, secteur d'activité, ...">
+          <span class="search-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.649 15.649C18.5299 12.7681 18.5299 8.09718 15.649 5.21627C12.7681 2.33536 8.09725 2.33536 5.21635 5.21627C2.33544 8.09718 2.33544 12.7681 5.21635 15.649C8.09725 18.5299 12.7681 18.5299 15.649 15.649Z" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22.6036 22.6045L15.6484 15.6494" stroke="#9DADAB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        <div class="view-switcher" data-view-switcher-target="dropdown">
+          <button class="view-btn" id="view-btn" type="button" data-action="click->view-switcher#toggleDropdown">
+            <span class="view-btn-icon" data-view-switcher-target="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="23" viewBox="0 0 28 23" fill="none">
+                <path d="M1 20.9838L3.20268 9.45143L8.47243 6.5459L14.0693 9.45143L19.6582 6.5459L24.9266 9.45143L27 20.7253L20.5212 18.018L14.0761 20.9838L7.56496 17.9751L1 20.9838Z" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                <path d="M8.47191 6.5459L7.56445 17.9751" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                <path d="M14.0703 9.45117L14.077 20.9836" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                <path d="M19.6582 6.5459L20.5212 18.018" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                <path d="M14.0901 12.3043C16.308 8.8768 17.8228 6.79454 17.8228 4.73264C17.8228 2.67074 16.152 1 14.0901 1C12.0282 1 10.3574 2.67074 10.3574 4.73264C10.3574 6.79454 11.8722 8.8768 14.0901 12.3043Z" fill="#59B224" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14.0909 6.20033C14.8401 6.20033 15.4474 5.593 15.4474 4.84382C15.4474 4.09464 14.8401 3.4873 14.0909 3.4873C13.3417 3.4873 12.7344 4.09464 12.7344 4.84382C12.7344 5.593 13.3417 6.20033 14.0909 6.20033Z" fill="white"/>
+              </svg>
+            </span>
+            <span class="view-btn-label" data-view-switcher-target="label">Vue carte</span>
+            <span class="view-btn-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
+                <path d="M1 1.5L8 8.5L15 1.5" stroke="#59B224" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="view-dropdown">
+            <button class="view-dropdown-item active" data-view="carte" type="button" data-action="click->view-switcher#selectView">
+              <span class="view-btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="23" viewBox="0 0 28 23" fill="none">
+                  <path d="M1 20.9838L3.20268 9.45143L8.47243 6.5459L14.0693 9.45143L19.6582 6.5459L24.9266 9.45143L27 20.7253L20.5212 18.018L14.0761 20.9838L7.56496 17.9751L1 20.9838Z" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                  <path d="M8.47191 6.5459L7.56445 17.9751" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                  <path d="M14.0703 9.45117L14.077 20.9836" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                  <path d="M19.6582 6.5459L20.5212 18.018" stroke="#004439" stroke-width="1.5" stroke-miterlimit="10"/>
+                  <path d="M14.0901 12.3043C16.308 8.8768 17.8228 6.79454 17.8228 4.73264C17.8228 2.67074 16.152 1 14.0901 1C12.0282 1 10.3574 2.67074 10.3574 4.73264C10.3574 6.79454 11.8722 8.8768 14.0901 12.3043Z" fill="#59B224" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14.0909 6.20033C14.8401 6.20033 15.4474 5.593 15.4474 4.84382C15.4474 4.09464 14.8401 3.4873 14.0909 3.4873C13.3417 3.4873 12.7344 4.09464 12.7344 4.84382C12.7344 5.593 13.3417 6.20033 14.0909 6.20033Z" fill="white"/>
+                </svg>
+              </span>
+              <span class="view-btn-label">Vue carte</span>
+            </button>
+            <button class="view-dropdown-item" data-view="liste" type="button" data-action="click->view-switcher#selectView">
+              <span class="view-btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="0.75" y="8.75" width="20.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+                  <rect x="0.75" y="0.75" width="12.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+                  <rect x="0.75" y="16.75" width="20.5" height="4.5" rx="1.25" stroke="#004439" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span class="view-btn-label">Vue liste</span>
+            </button>
+          </div>
+        </div>
+        <div class="search-bar-separator"></div>
+        <button class="yembalko-btn" type="button">
+          <span class="yembalko-btn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="17" viewBox="0 0 21 17" fill="none">
+              <path d="M14.9262 2.48848C14.2391 2.48848 13.682 1.93141 13.682 1.24424C13.682 0.557065 13.1249 0 12.4378 0H8.29003C7.60285 0 7.04579 0.557065 7.04579 1.24424C7.04579 1.93141 6.48872 2.48848 5.80155 2.48848H3.52289C1.57725 2.48848 0 4.06573 0 6.01137V13C0 15.2091 1.79086 17 4 17H16.7278C18.9369 17 20.7278 15.2091 20.7278 13V6.01137C20.7278 4.06573 19.1505 2.48848 17.2049 2.48848H14.9262Z" fill="#004439"/>
+              <path d="M10.3636 13.3707C12.3679 13.3707 13.9927 11.7458 13.9927 9.74148C13.9927 7.73714 12.3679 6.1123 10.3636 6.1123C8.35921 6.1123 6.73438 7.73714 6.73438 9.74148C6.73438 11.7458 8.35921 13.3707 10.3636 13.3707Z" fill="white"/>
+            </svg>
+          </span>
+          <span class="yembalko-btn-label">Yembalko</span>
+        </button>
+      </div>
+      <div class="opportunities-title">
+        <span>Les opportunités industrielles trouvées <span class="count">(2815)</span></span>
+      </div>
+      <div class="map-container" data-controller="map" data-map-center-value="[14.6928, -17.4467]" data-map-zoom-value="7">
+        <div class="map-wrapper">
+          <div id="map" data-map-target="container"></div>
+          <div class="map-loading-overlay" data-map-target="loadingOverlay" style="display: flex;">
+            Initialisation de la carte...
+          </div>
+        </div>
+      </div>
+      <div class="view-liste" data-view-switcher-target="liste" style="display:none;">
+        <div class="liste-placeholder">
+          <p>Voici la liste des opportunités (affichée uniquement en mode "Vue liste").</p>
+          <!-- Remplace ce contenu par ta vraie liste -->
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <%= render "home/partials/footer" %>

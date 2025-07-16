@@ -41,7 +41,6 @@ body {
 /* Ajustement pour header fixe */
 .main-content {
   padding-top: var(--header-height);
-  min-height: 100vh;
 }
 
 .header {
