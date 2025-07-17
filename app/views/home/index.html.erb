@@ -3,15 +3,18 @@
   <link rel="stylesheet" href="/css/home/footer.css">
   <link rel="stylesheet" href="/css/home/landing.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
 <% end %>
 
 <% content_for :extern_js do %>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 <% end %>
 
 <%= render "home/partials/header" %>
 
-<div class="home-main-layout">
+<div class="home-main-layout" data-opportunities='<%= @opportunities.to_json(only: [:id, :name, :latitude, :longitude, :location_name, :description, :available_resources, :market_opportunity, :tags]) %>'>
   <aside class="sidebar-keywords" data-controller="sidebar">
     <div data-sidebar-target="sidebar" class="filter-sidebar" id="filter-sidebar">
       <button class="filter-toggle-btn" id="filter-toggle-btn" aria-label="Afficher/masquer les mots-clés" data-action="click->sidebar#toggle">
@@ -25,21 +28,9 @@
           <h4 class="filter-title">Mots-clés populaires</h4>
         </div>
         <div class="keywords-list" id="keywords-list">
-          <div class="filter-keyword"><span class="filter-keyword-name">export</span> <span class="filter-keyword-count">+950</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">agroalimentaire</span> <span class="filter-keyword-count">+579</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">transformation</span> <span class="filter-keyword-count">+348</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">artisanat</span> <span class="filter-keyword-count">+286</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">Thiès</span> <span class="filter-keyword-count">+203</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">Fatick</span> <span class="filter-keyword-count">+186</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">Louga</span> <span class="filter-keyword-count">+185</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">Sédhiou</span> <span class="filter-keyword-count">+173</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">Kaffrine</span> <span class="filter-keyword-count">+160</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">énergie</span> <span class="filter-keyword-count">+156</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">numérique</span> <span class="filter-keyword-count">+153</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">industriel</span> <span class="filter-keyword-count">+147</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">Kédougou</span> <span class="filter-keyword-count">+140</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">industrie</span> <span class="filter-keyword-count">+139</span></div>
-          <div class="filter-keyword"><span class="filter-keyword-name">recyclage</span> <span class="filter-keyword-count">+127</span></div>
+          <% @popular_tags.each do |tag| %>
+            <div class="filter-keyword"><span class="filter-keyword-name"><%= tag[:name] %></span> <span class="filter-keyword-count">+<%= tag[:count] %></span></div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -113,7 +104,7 @@
         </button>
       </div>
       <div class="opportunities-title">
-        <span>Les opportunités industrielles trouvées <span class="count">(2815)</span></span>
+        <span>Les opportunités industrielles trouvées <span class="count">(<%= @opportunities.size %>)</span></span>
       </div>
       <div class="map-container" data-controller="map" data-map-center-value="[14.6928, -17.4467]" data-map-zoom-value="7">
         <div class="map-wrapper">
