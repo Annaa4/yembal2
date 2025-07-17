@@ -14,15 +14,15 @@
 <div class="home-main-layout">
   <aside class="sidebar-keywords" data-controller="sidebar">
     <div data-sidebar-target="sidebar" class="filter-sidebar" id="filter-sidebar">
+      <button class="filter-toggle-btn" id="filter-toggle-btn" aria-label="Afficher/masquer les mots-clés" data-action="click->sidebar#toggle">
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.4 4.59961L2 9.99961L7.4 15.3996" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12.8008 1V19" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
       <div class="filter-container" id="filter-container">
         <div class="filter-title-row">
           <h4 class="filter-title">Mots-clés populaires</h4>
-          <button class="filter-toggle-btn" id="filter-toggle-btn" aria-label="Afficher/masquer les mots-clés" data-action="click->sidebar#toggle">
-            <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.4 4.59961L2 9.99961L7.4 15.3996" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M12.8008 1V19" stroke="#9DADAB" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </button>
         </div>
         <div class="keywords-list" id="keywords-list">
           <div class="filter-keyword"><span class="filter-keyword-name">export</span> <span class="filter-keyword-count">+950</span></div>

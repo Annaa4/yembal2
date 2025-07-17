@@ -6,13 +6,20 @@ export default class extends Controller {
 
   connect() {
     if (!this.map) {
-      // Centre décalé vers le sud pour mieux cadrer le Sénégal
-      this.map = L.map(this.containerTarget).setView([13.8, -14.5], 7)
+      // Centre et zoom optimal sur le Sénégal, comme sur la capture d'écran
+      this.map = L.map(this.containerTarget).setView([14.2, -14.5], 7.3)
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         maxZoom: 19,
         opacity: 0.9,
         attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>'
       }).addTo(this.map)
+
+      // Masquer l'overlay dès que la carte est prête
+      this.map.whenReady(() => {
+        if (this.hasLoadingOverlayTarget) {
+          this.loadingOverlayTarget.style.display = "none";
+        }
+      });
 
       fetch('https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_ocean.geojson')
         .then(response => response.json())
@@ -25,9 +32,6 @@ export default class extends Controller {
               color: '#cce5ff'
             }
           }).addTo(this.map);
-          if (this.hasLoadingOverlayTarget) {
-            this.loadingOverlayTarget.style.display = "none";
-          }
         });
     }
   }
